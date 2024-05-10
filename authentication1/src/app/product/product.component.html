@@ -1,0 +1,30 @@
+<h2 class="text-3xl font-bold mb-4">Products</h2>
+
+<div *ngIf="products.length > 0; else loading">
+  <ul>
+    <li *ngFor="let product of products" class="border rounded-lg p-4 mb-8">
+      <h3 class="text-xl font-semibold">{{ product.name }}</h3>
+      <p class="text-gray-600">Category: {{ product.category }}</p>
+      <p class="text-gray-600">Description: {{ product.description }}</p>
+      <p class="text-gray-600">Price: {{ product.price }}</p>
+      <p class="text-gray-600">Average Rating: {{ product.average_rating }}</p>
+      <p class="text-gray-600">Total Ratings: {{ product.total_ratings }}</p>
+
+      <form (submit)="submitRating(product.id, rating)">
+        <label for="rating-input" class="block mt-4">Your Rating:</label>
+        <input type="number" id="rating-input" name="rating" [(ngModel)]="rating" min="1" max="5"
+               class="mt-1 w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+        <button type="submit" class="mt-2 bg-indigo-500 text-white rounded-lg px-4 py-2 hover:bg-indigo-600">Submit Rating</button>
+      </form>
+      <button (click)="deleteProduct(product.id)" class="bg-red-500 text-white rounded-lg px-4 py-2 mt-2 hover:bg-red-600">Delete</button>
+
+      <button (click)="goToEditPage(product.id)" class="bg-blue-500 text-white rounded-lg px-4 py-2 mt-2 hover:bg-blue-600">Edit</button>
+      <button (click)="goToCommentPage(product.id)" class="bg-green-500 text-white rounded-lg px-4 py-2 mt-2 hover:bg-blue-600">Comment</button>
+
+    </li>
+  </ul>
+</div>
+
+<ng-template #loading>
+  <p class="text-gray-600">Loading products...</p>
+</ng-template>

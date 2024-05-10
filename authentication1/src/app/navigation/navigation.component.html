@@ -1,0 +1,15 @@
+<nav class="bg-gray-800 p-4">
+    <ul class="flex justify-between items-center">
+      <li><a routerLink="/" class="text-white">Home</a></li>
+      <li><a routerLink="/products" class="text-white">Products</a></li>
+      <ng-container *ngIf="!isLoggedIn; else loggedIn">
+        
+        <li><a routerLink="/login" class="text-white">Login</a></li>
+      </ng-container>
+      <ng-template #loggedIn>
+        <li class="text-white">{{ userEmail }}</li>
+        <li (click)="logout()" class="text-white cursor-pointer">Logout</li>
+      </ng-template>
+    </ul>
+  </nav>
+  
