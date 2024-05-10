@@ -40,11 +40,9 @@ export class NavigationComponent implements OnInit {
       (data) => {
         console.log(data);
         this.isLoggedIn = false;
-        // Optionally, perform additional actions after logout
       },
       (error) => {
         console.error('Error logging out:', error);
-        // Handle error, display error message, etc.
       }
     );
   }

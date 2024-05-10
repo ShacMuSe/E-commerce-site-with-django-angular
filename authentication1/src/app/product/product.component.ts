@@ -32,13 +32,11 @@ export class ProductComponent implements OnInit {
   deleteProduct(productId: number) {
     this.productService.deleteProduct(productId).subscribe(
       () => {
-        // Product deleted successfully, update UI as needed
-        // For example, remove the deleted product from the products list
+        
         this.products = this.products.filter(product => product.id !== productId);
       },
       (error) => {
         console.error('Error deleting product:', error);
-        // Handle error, display error message, etc.
       }
     );
   }
@@ -56,9 +54,7 @@ export class ProductComponent implements OnInit {
   submitRating(productId: number, rating: number): void {
     this.productService.rateProduct(productId, rating).subscribe(
       (data) => {
-        // Handle successful rating submission
         console.log('Rating submitted successfully:', data);
-        // Optionally, update the product list to reflect the new rating
         this.getProducts();
       },
       (error) => {

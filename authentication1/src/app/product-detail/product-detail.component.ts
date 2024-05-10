@@ -29,8 +29,7 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(this.productId).subscribe(
       product => {
         this.product = product;
-        // Initialize updatedProductData with current product data
-        this.updatedProductData = { ...product };
+        this.updatedProductData = { product };
       },
       error => {
         console.error('Error fetching product:', error);
@@ -42,7 +41,6 @@ export class ProductDetailComponent implements OnInit {
     this.productService.updateProduct(this.productId, this.updatedProductData).subscribe(
       updatedProduct => {
         this.product = updatedProduct;
-        // Optionally, display a success message or navigate to another page
       },
       error => {
         console.error('Error updating product:', error);

@@ -1,4 +1,3 @@
-// product.interface.ts
 export interface Product {
     id: number;
     name: string;
@@ -7,6 +6,5 @@ export interface Product {
     description: string;
     average_rating: number;
     total_ratings: number;
-    // Add other properties as needed
   }
   
