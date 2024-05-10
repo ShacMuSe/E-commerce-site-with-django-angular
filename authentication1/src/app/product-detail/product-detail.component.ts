@@ -29,7 +29,8 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(this.productId).subscribe(
       product => {
         this.product = product;
-        this.updatedProductData = { product };
+        // Initialize updatedProductData with current product data
+        this.updatedProductData = { ...product };
       },
       error => {
         console.error('Error fetching product:', error);
